@@ -12,7 +12,7 @@ Once you finish with the walkthrough, you can proceed to the
 clojure-spec-presentation.exercises  namespace to finish some exercises and increase your
 knowledge of clojure.spec
 
-The answers to the challenges will be in the clojure-spec-presentation.generators  namespace.
+The answers to the challenges will be in the clojure-spec-presentation.example-specs namespace.
 
 ## License
 
