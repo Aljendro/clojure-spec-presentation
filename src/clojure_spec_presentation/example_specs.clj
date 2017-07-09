@@ -37,3 +37,55 @@
 ;;;;;;;;;;;;;; Solutions for exercises.clj ;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; 1.
+
+(spec/def ::problem-1 (spec/and int? pos?))
+
+;; 2.
+
+(spec/def ::problem-2 #{:a :b :c})
+
+;; 3.
+
+(spec/def ::problem-3 (spec/and string?
+                                #(< 5 (count %))))
+
+;; 4.
+
+(spec/def ::problem-4 (spec/coll-of keyword? :count 3))
+
+;; 5.
+
+(spec/def ::problem-5 (spec/keys :req-un [::problem-1 ::problem-2]))
+
+;; 6.
+
+(spec/def ::problem-6 (spec/cat :first (spec/? string?)
+                                :second (spec/coll-of int? :count 3)
+                                :third (spec/coll-of keyword? :count 3)))
+
+
+
+;; 7.
+
+(spec/def ::problem-7 (spec/cat :presidents #{"Washington" "Harrison"}
+                                :tags (spec/alt :strings (spec/coll-of string? :count 3)
+                                                :keywords (spec/coll-of keyword? :count 3))))
+
+
+;; 8.
+
+(spec/def ::problem-8 (spec/cat :orders (spec/alt :keywords (spec/* keyword?)
+                                                  :strings (spec/* string?))
+                                :numbers (spec/alt :ints (spec/* int?)
+                                                   :doubles (spec/* double?))))
+
+;; 9.
+
+(spec/def ::map-collection (spec/coll-of (spec/keys :req-un [::problem-1 ::problem-2]) :count 3))
+(spec/def ::mystery-sequence (spec/cat :states #{"California" "Nevada" "New York"}
+                                       :continent #{:Europe :Antartica :North-America}
+                                       :languages #{"java" "clojure" "C"}))
+
+(spec/def ::problem-9 (spec/keys :req-un [::map-collection ::mystery-sequence]))
+
