@@ -106,11 +106,12 @@
 
 
 ;; A simple example
-(spec/explain int? "hello")
+
+#_(spec/explain int? "hello")
 
 
-(spec/explain ::example/special-sequence [1 2 "hello" 3])
-(spec/explain ::example/special-map {::example/team-a {::example/score 100
+#_(spec/explain ::example/special-sequence [1 2 "hello" 3])
+#_(spec/explain ::example/special-map {::example/team-a {::example/score 100
                                                        ::example/players []}})
 
 
@@ -139,12 +140,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;; x. Generative test generation ;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;; x. Defining Specs ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -153,6 +148,7 @@
 
 (spec/def ::integer int?)
 (spec/valid? ::integer 1000)
+
 
 
 
@@ -168,6 +164,56 @@
                           :mexican #{"enchilada" "taco"}))
 (spec/valid? ::food "hamburger")
 (spec/conform ::food "hamburger")
+
+
+
+
+
+
+;; Maps
+;; clojure.spec seperates specing the keys for a map and the values
+;; of those keys
+(spec/def ::value-1 int?)
+(spec/def ::value-2 string?)
+(spec/def ::opt-value-1 keyword?)
+(spec/def ::opt-value-2 symbol?)
+
+;; We can define which keys are required and which keys must be
+;; namespace qualified
+(spec/def ::map-spec (spec/keys :req    [::value-1]        ;; Namespaced qualified and required
+                                :req-un [::value-2]        ;; Required
+                                :opt    [::opt-value-1]
+                                :opt-un [::opt-value-2]))
+
+(spec/valid? ::map-spec {::value-1 1
+                         :value-2 "hello"
+                         ::opt-value-1 :hello
+                         :opt-value-2 'huh})
+
+
+
+
+
+;; Collections
+(spec/def ::collection-1 (spec/coll-of int?))
+(spec/valid? ::collection-1 '(1 2 3 4 5))
+
+;; Compose them with other specs
+(spec/def ::collection-2 (spec/coll-of ::food))
+(spec/valid? ::collection-2 '("hot dog" "hamburger" "hot dog" "enchilada"))
+
+;; come with lots of options
+(spec/def ::collection-3 (spec/coll-of int?
+                                       :kind vector?
+                                       :min-count 1
+                                       :max-count 3
+                                       :distinct true
+                                       :into '()))
+(spec/valid? ::collection-3 [1 2 3])
+(spec/conform ::collection-3 [1 2 3])
+
+
+
 
 
 
