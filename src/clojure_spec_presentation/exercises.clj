@@ -104,3 +104,109 @@
    :zU8.+M!!8O.L_lW!hg?.y.JUE*.a4?zH8.V+kzo_r.?rr?7wn/Xrk3qS*]))
 
 (test-spec :problem-6 any?)
+
+
+
+;; Problem 7
+#_
+(("Harrison" [:+ :j :!])
+ ("Harrison" [:G :* :j2])
+ ("Harrison" [:n :B_3.w/p+e :x-7.E*9/_])
+ ("Harrison" ["l" "6" ""])
+ ("Washington" [:_G.w+.c6/Y2E :+o5.h.G*.?-/AH :?6])
+ ("Washington" [:E+/-Az6 :k!+s-.k/a :E?*+Bb/Csv])
+ ("Harrison" ["dG1D" "qQ9m8" "Qhd"])
+ ("Harrison" ["Cq7s" "" "CzRk"])
+ ("Harrison"
+  [:-Zz+4_!/!-Y2
+   :t.q0-_Om1N.H??-5__2I.J-+Po_.+A!***p.oQ.*-_!!Q.A?V1-+LF/p_?t0VrV
+   :q_6.D?bs.+n8!E.+g/Y])
+ ("Washington"
+  [:__F?3.*3K-9x.Qt2_7?1EP.L64.Ev*2y+.qdqkP758W.r!2!5.!+G1*_4-/uJr2
+   :KE.u_.!-1_Tj.pi_2Y39/Wl_!6!5
+   :E_l*42D]))
+
+(test-spec :problem-7 any?)
+
+
+
+;; Problem 8
+#_
+(()
+ ("" 1.0)
+ (:WF+/b+ :hOo/v3 0)
+ (1 -4 2)
+ (:*w.!A.WpR*.!/jo09 :T.D.?c/V+ -1 -1 -1 1)
+ ("H" "" "8711n" "CBUl7" -3 1 0 -1 2)
+ (-18 4 -5 2)
+ ("" "Zh0w9H" "m0" "Wo0i06" "" "8wisxmO" -1 0 -1 -6 0)
+ (:B*L.nM*80u*.j06s/-67
+  :?RZ0O.Q31*cz.FQ!!.h-+OG5.Bk?+y64r_4.BM704*6/t1EZu
+  :u_!137+.S-_K.F0?975NP1.v*e-n*.!h5WW-*jj.h30/R5pJGz7q
+  :gZ8+2i?H.zHkz.!?/-bQQ-3n
+  :!pV*?p!_C/THq9*x-P
+  :Tk*?Q32r.*7D6_M-._?0g9qi.E+-On.wlaXy+.C7JI?2-m.+yq13EM/s_X!7_J4_
+  :k.!kE-*2!ZU.G.*j.Iv/UVl92*?-3
+  -6.1875
+  0.25
+  Infinity)
+ ("M388xwPda" "" "5p7U" "929VEL4XY" "7"))
+
+(test-spec :problem-8 any?)
+
+
+;; Problem 9
+#_
+({:map-collection
+  [{:problem-1 3, :problem-2 :b}
+   {:problem-1 1, :problem-2 :c}
+   {:problem-1 9, :problem-2 :c}],
+  :mystery-sequence ("New York" :Antartica "C")}
+ {:map-collection
+  [{:problem-1 7, :problem-2 :b}
+   {:problem-1 1, :problem-2 :c}
+   {:problem-1 1, :problem-2 :b}],
+  :mystery-sequence ("Nevada" :North-America "clojure")}
+ {:map-collection
+  [{:problem-1 6, :problem-2 :b}
+   {:problem-1 1, :problem-2 :b}
+   {:problem-1 4, :problem-2 :a}],
+  :mystery-sequence ("New York" :North-America "C")}
+ {:map-collection
+  [{:problem-1 13, :problem-2 :b}
+   {:problem-1 6, :problem-2 :a}
+   {:problem-1 3, :problem-2 :b}],
+  :mystery-sequence ("New York" :Antartica "clojure")}
+ {:map-collection
+  [{:problem-1 1, :problem-2 :a}
+   {:problem-1 1, :problem-2 :c}
+   {:problem-1 6, :problem-2 :a}],
+  :mystery-sequence ("Nevada" :North-America "clojure")}
+ {:map-collection
+  [{:problem-1 2, :problem-2 :a}
+   {:problem-1 1, :problem-2 :b}
+   {:problem-1 1, :problem-2 :a}],
+  :mystery-sequence ("New York" :Antartica
+ "clojure")}
+ {:map-collection
+  [{:problem-1 12, :problem-2 :a}
+   {:problem-1 11, :problem-2 :c}
+   {:problem-1 1, :problem-2 :a}],
+  :mystery-sequence ("California" :Europe "C")}
+ {:map-collection
+  [{:problem-1 54, :problem-2 :c}
+   {:problem-1 3, :problem-2 :a}
+   {:problem-1 3, :problem-2 :c}],
+  :mystery-sequence ("Nevada" :Europe "C")}
+ {:map-collection
+  [{:problem-1 6, :problem-2 :b}
+   {:problem-1 7, :problem-2 :b}
+   {:problem-1 6, :problem-2 :b}],
+  :mystery-sequence ("New York" :Europe "java")}
+ {:map-collection
+  [{:problem-1 88, :problem-2 :c}
+   {:problem-1 3, :problem-2 :c}
+   {:problem-1 641, :problem-2 :b}],
+  :mystery-sequence ("New York" :North-America "C")})
+
+(test-spec :problem-9 any?)
