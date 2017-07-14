@@ -214,6 +214,54 @@
 
 
 
+;; Sequences
+;; The api is similar to regular expressions on strings
+
+;; Look at the regular expression #"bye" as
+;; a list '(b y e)
+
+;; Use spec/cat in this instance 
+;; (Note: using keywords here for ease of use)
+(spec/def ::sequence-1 (spec/cat :b #{:b}      ;; spec/cat requires a label for each part
+                                 :y #{:y}
+                                 :e #{:e}))
+(spec/valid? ::sequence-1 '(:b :y :e))
+
+
+;; #"b.*e" --------> '(b (* any?) e)
+;; There is also spec/+ and spec/?
+(spec/def ::sequence-2 (spec/cat :b        #{:b}
+                                 :anything (spec/* any?)
+                                 :e        #{:e}))
+
+(spec/valid? ::sequence-2 '(:b :e))
+(spec/conform ::sequence-2 '(:b :e))
+
+(spec/valid? ::sequence-2 '(:b :y :y :e :w :h :e))
+(spec/conform ::sequence-2 '(:b :y :y :e :w :h :e))
+
+
+;; #"b(e|y)e" -----> '(b (alt e y) e)
+;; There is also spec/&
+(spec/def ::sequence-3 (spec/cat :b      #{:b}
+                                 :e-or-y (spec/alt :e #{:e}   ;; spec/alt requires labels
+                                                   :y #{:y})
+                                 :e      #{:e}))
+
+
+;; However, spec can capture much more than keywords.
+;; Nest arbitrary specs into sequences
+
+(spec/def ::sequence-4 (spec/cat :start-code        ::integer
+                                 :food-orders       (spec/+ ::food)
+                                 :0-or-large-number (spec/alt :big-int ::big-integer
+                                                              :zero (spec/and int? zero?))
+                                 :name              (spec/& string?
+                                                            #(not (empty? %)))))
+
+(def example-seq '(1101 "enchilada" "taco" "hamburger" 0 "John"))
+(spec/valid? ::sequence-4 example-seq)
+(spec/conform ::sequence-4 example-seq)
 
 
 
@@ -233,12 +281,4 @@
   [number]
   number)
 
-
-
-;; Further API examples continued at bottom for later viewing
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;; x. Defining Specs (Cont'd) ;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
